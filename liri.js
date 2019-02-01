@@ -37,7 +37,7 @@ switch (app) {
         break;
 }
 
-// 
+//Load BIT API adding an input to get a response through a fuction, obtaining the required concert info fields
 function concerts(input) {
     var queryURL = "https://rest.bandsintown.com/artists/" + input + "/events?app_id=codingbootcamp"
 
@@ -58,47 +58,49 @@ function concerts(input) {
             ].join("\n\n");
         }
         
-        // fs.appendFile("log.txt", showData + divider, function (err) {
-            // if (err) throw err;
-        // });
+        fs.appendFile("log.txt", showData + divider, function (err) {
+            if (err) throw err;
+        });
     });
 }
 
+// Create a Spotify function
 function spotifying(input) {
-    if (!input) {
-        input = "The Sign";
-    }
+  if (!input) {
+            input = "The Sign";
+        }
 
     // var queryURL = "https://api.spotify.com/v1/search?q" + input + 
     
-    spotify.search({ type: "track", query: input }, function(err, data) {
+    spotify.search({ type: "track", query: input }, function (err, data) {
         if (err) {
-            return console.log("Error occurred: " + err);
-                    }
-             console.log(data);
-        });
-
+            console.log("Error occurred: " + err);
+            return;
+        }
+// I had a lot of issues with the variable below and I couldn't find very easily the way
+// to make it work. For Loop only repeated the same songs
+        // for(i=0; i < data.tracks.items.length; i++){
         var songData = data.tracks.items;
-        // for (i = 0; i < data.length; i++) {
-            console.log("Artist(s): " + songData[0].artist[0].name);
-            console.log("Song's Name: " + songData[0].name);
-            console.log("Preview Link: " + songData[0].preview_url);
-            console.log("Album's Name: " + songData[0].album.name);
-        // }
+        console.log("Artist(s): " + songData[0].artists[0].name);
+        console.log("Song Name: " + songData[0].name);
+        console.log("Preview Link: " + songData[0].preview_url);
+        console.log("Album: " + songData[0].album.name);
 
         var showData = [
-            "Artist(s): " + songData[0].artist[0].name,
-            "Song's Name: " + songData[0].name,
+            "Artist(s): " + songData[0].artists[0].name,
+            "Song Name: " + songData[0].name,
             "Preview Link: " + songData[0].preview_url,
-            "Album's Name: " + songData[0].album.name
-        ].join("\n\n");
+            "Album: " + songData[0].album.name
+        ].join("\n\n");   
+        // } 
 
-         // fs.appendFile("log.txt", showData + divider, function (err) {
-            // if (err) throw err;
-        // });
-    }
+        fs.appendFile("log.txt", showData + divider, function (err) {
+            if (err) throw err;
+        });
+    });
+}
     
-            
+// Create a OMDb function that would work with Axios to get movie information
 function movies(input) {
     if (!input) {
         input = "Mr. Nobody";
