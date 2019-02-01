@@ -1,0 +1,22 @@
+Name of the venue: Bridgestone Arena
+
+Venue location: Nashville
+
+Date of the Event: 01/31/2019
+---------------------------
+Title of the movie: Alien
+
+Year the movie came out: 1979
+
+IMDB Rating of the movie: 8.5
+
+Rotten Tomatoes Rating of the movie: 97%
+
+Country where the movie was produced: UK, USA
+
+Language of the movie: English
+
+Plot of the movie: After a space merchant vessel perceives an unknown transmission as a distress call, its landing on the source moon finds one of the crew attacked by a mysterious lifeform, and they soon realize that its life cycle has merely begun.
+
+Actors in the movie: Tom Skerritt, Sigourney Weaver, Veronica Cartwright, Harry Dean Stanton
+---------------------------
